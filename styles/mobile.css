@@ -1,0 +1,123 @@
+/* mobile.css */
+
+/* Estilos específicos para dispositivos móviles */
+
+.mobile-menu-button {
+    display: none; /* Oculta el botón de menú en pantallas grandes */
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Estilo de las barras de menú */
+.mobile-menu-button .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px auto; /* Espaciado entre las barras */
+    transition: 0.4s; /* Transición suave */
+}
+
+/* Ajuste para el botón de menú cuando está activo */
+.mobile-menu-button.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-menu-button.active .bar:nth-child(2) {
+    opacity: 0; /* Oculta la barra del medio */
+}
+
+.mobile-menu-button.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (max-width: 800px) {
+    .mobile-menu-button {
+        display: block; /* Muestra el botón de menú en dispositivos móviles */
+    }
+
+    .navbar-menu {
+        display: none; /* Oculta la lista de menú normal en dispositivos móviles */
+    }
+
+    .navbar-menu.active {
+        display: flex; /* Muestra la lista de menú normal cuando el botón de menú está activo */
+        flex-direction: column; /* Alinea los elementos verticalmente */
+        background-color: #000; /* Color de fondo para el menú desplegable */
+        position: absolute;
+        width: 100%;
+        top: 60px; /* Ajusta la posición de la lista de menú */
+        left: 0;
+        padding: 20px; /* Espaciado interno */
+        box-sizing: border-box; /* Incluye el padding en el ancho */
+    }
+
+    .navbar-menu.active li {
+        margin-bottom: 10px; /* Espaciado entre elementos del menú */
+    }
+
+    .quienes-somos-img-right,
+    .quienes-somos-img-left{
+        display: none;
+    }
+}
+
+.section-four {
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.left-half,
+.right-half {
+    flex: 1;
+}
+
+@media (max-width: 800px) {
+    .section-four {
+        flex-direction: column; /* Cambia la dirección a columnas en dispositivos móviles */
+    }
+
+    .left-half,
+    .right-half {
+        width: 100%; /* Ocupa todo el ancho */
+    }
+
+    .right-half {
+        order: 1; /* Cambia el orden para que la mitad derecha aparezca primero */
+    }
+    
+    .contact-form button{
+        width: 50%;
+    }
+
+    .footer {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    flex-wrap: wrap; /* Añade flex-wrap para permitir el ajuste en dispositivos pequeños */
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column; /* Coloca los elementos verticalmente en dispositivos móviles */
+    align-items: flex-start;
+}
+
+.footer-left-content {
+    margin-right: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.footer-right {
+    order: 1; /* Cambia el orden para que la parte derecha aparezca debajo */
+}
+
+}
