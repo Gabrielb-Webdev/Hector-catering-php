@@ -128,7 +128,7 @@ img{
 }
 
 .quienes-somos-img img {
-    width: 100%; /* Establece el ancho máximo de las imágenes */
+    width: 150px; /* Establece el ancho máximo de las imágenes */
     height: auto; /* La altura se ajustará automáticamente para mantener la proporción de aspecto */
 }
 

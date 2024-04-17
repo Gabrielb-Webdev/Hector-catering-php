@@ -91,33 +91,47 @@
     .contact-form button{
         width: 50%;
     }
+    .contact-form{
+        width: 90%;
+    }
 
-    .footer {
+.footer {
     background-color: black;
     color: white;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center; /* Centra los elementos verticalmente */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en dispositivos pequeños */
     padding: 20px;
-    flex-wrap: wrap; /* Añade flex-wrap para permitir el ajuste en dispositivos pequeños */
 }
 
 .footer-left {
     display: flex;
-    flex-direction: column; /* Coloca los elementos verticalmente en dispositivos móviles */
-    align-items: flex-start;
-}
-
-.footer-left-content {
-    margin-right: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    flex-direction: column; /* Coloca los elementos verticalmente */
+    align-items: center; /* Centra los elementos horizontalmente */
     margin-bottom: 15px;
 }
 
-.footer-right {
-    order: 1; /* Cambia el orden para que la parte derecha aparezca debajo */
+.footer-left img {
+    margin-bottom: 15px; /* Añade espacio entre la imagen y el texto */
 }
 
+.footer-right {
+    order: 1; /* Cambia el orden para que el logo aparezca debajo */
+    margin-top: 15px; /* Añade espacio entre el texto y el logo */
+}
+
+.footer-left-content{
+    display: flex;
+    flex-direction: column;
+    margin-left: 0;
+}
+
+.footer-right img{
+    margin-right: 0;
+}
+
+    .quienes-somos-img img{
+        width: 100%;
+    }
 }
