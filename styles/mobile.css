@@ -166,8 +166,16 @@
     }
     
     .close{
-        left: 92%;
-        top: 14%;
+        left: 90%;
+        top: 17%;
+        background-color: #f3b01b;
+        border-radius: 65px;
+        width: 10%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
     }
 
     .modal{
