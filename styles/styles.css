@@ -628,8 +628,8 @@ button {
     float: right;
     font-size: 28px;
     font-weight: bold;
-    position: relative;
-    left: 150%;
+    position: fixed;
+    left: 95%;
 }
 
 .close:hover,
