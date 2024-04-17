@@ -165,19 +165,22 @@
         align-items: center;
     }
     
-    .close{
-        left: 90%;
-        top: 17%;
-        background-color: #f3b01b;
-        border-radius: 65px;
-        width: 10%;
-        height: auto;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: center;
-        z-index: 100000;
-    }
+    .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: auto;
+    background-color: #f3b01b;
+    border-radius: 65px;
+    width: 10%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    z-index: 100000;
+}
+
 
     .modal{
         flex-direction: column;

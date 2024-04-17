@@ -625,19 +625,34 @@ button {
 }
 
 .close {
-    color: #e4d8d8;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    position: fixed;
-    left: 95%;
+    position: absolute;
+    top: 0;
+    right: 0px;
+    left: auto;
+    background-color: #f3b01b;
+    border-radius: 65px;
+    width: 2.5%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    z-index: 100000;
 }
+
 
 .close:hover,
 .close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+button.boton-adicional {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20%;
 }
 
 /* Estilos para el contenido dentro de los lados del modal */
