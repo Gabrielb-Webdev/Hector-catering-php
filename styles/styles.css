@@ -649,10 +649,10 @@ button {
 }
 
 button.boton-adicional {
-    position: absolute;
+    position: unset;
     bottom: 0;
     right: 0;
-    width: 20%;
+    width: 50%;
 }
 
 /* Estilos para el contenido dentro de los lados del modal */
