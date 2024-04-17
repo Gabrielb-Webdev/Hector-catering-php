@@ -16,15 +16,14 @@ fileInput.addEventListener('change', (event) => {
 
         // Callback que se ejecuta cuando la carga es exitosa
         xhr.onload = function() {
-    if (xhr.status === 200) {
-        console.log('La imagen se ha cargado exitosamente.');
-        // Recargar la página después de que la imagen se haya cargado exitosamente
-        location.reload();
-    } else {
-        console.log('Hubo un error al cargar la imagen.');
-    }
-};
-
+            if (xhr.status === 200) {
+                console.log('La imagen se ha cargado exitosamente.');
+                // Recargar la página después de que la imagen se haya cargado exitosamente
+                location.reload();
+            } else {
+                console.log('Hubo un error al cargar la imagen.');
+            }
+        };
 
         // Crear un objeto FormData y agregar la imagen al mismo
         const formData = new FormData();
@@ -35,22 +34,47 @@ fileInput.addEventListener('change', (event) => {
     }
 });
 
-
 // Agregar evento de clic al icono icon-tabler-trash-x
 const icono2 = document.querySelector('.icon-tabler-trash-x');
 icono2.addEventListener('click', () => {
-    // Obtener la imagen actualmente visible en el carrusel
-    const imagenActual = document.querySelector('.swiper-slide-active img');
-    // Obtener la ruta completa de la imagen desde la base de datos
-    const rutaBaseDatos = obtenerRutaBaseDatos(imagenActual.src);
-    // Mostrar la ruta completa de la imagen en la consola
-    console.log('La ruta completa de la imagen en la base de datos es:', rutaBaseDatos);
-});
+    // Mostrar mensaje de confirmación
+    if (confirm('¿Estás seguro de querer borrar esta imagen?')) {
+        // Obtener la imagen actualmente visible en el carrusel
+        const imagenActual = document.querySelector('.swiper-slide-active img');
+        // Obtener la ruta de la imagen
+        const rutaImagen = imagenActual.src;
+        const rutaImagen2 = imagenActual.getAttribute('src');
 
-// Función para obtener la ruta completa de la imagen desde la base de datos
-function obtenerRutaBaseDatos(rutaParcial) {
-    // Supongamos que las rutas en la base de datos están en un formato similar a 'sources/test/image_6620481037df6.jpeg'
-    // Puedes implementar esta función según cómo estén almacenadas las rutas en tu base de datos
-    // Por ahora, simplemente devolveremos la ruta parcial
-    return rutaParcial;
-}
+        // Mostrar la ruta de la imagen en la consola
+        console.log('Ruta de la imagen a borrar:', rutaImagen);
+        console.log('Ruta de la imagen a borrar:', rutaImagen2);
+
+        // Enviar una solicitud AJAX para eliminar la imagen del sistema de archivos
+        const xhr1 = new XMLHttpRequest();
+        xhr1.open('POST', 'backend/delete.php');
+        xhr1.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr1.onload = function () {
+            if (xhr1.status === 200) {
+                console.log(xhr1.responseText);
+            } else {
+                console.error('Error al intentar eliminar la imagen del sistema de archivos.');
+            }
+        };
+        xhr1.send(`rutaImagen=${rutaImagen}`);
+
+        // Enviar una solicitud AJAX para eliminar la entrada de la base de datos
+        const xhr2 = new XMLHttpRequest();
+        xhr2.open('POST', 'backend/delete.php');
+        xhr2.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr2.onload = function () {
+            if (xhr2.status === 200) {
+                console.log(xhr2.responseText);
+                // Recargar la página después de la eliminación exitosa
+                location.reload();
+            } else {
+                console.error('Error al intentar eliminar la entrada de la base de datos.');
+            }
+        };
+        xhr2.send(`rutaImagen=${rutaImagen2}`);
+    }
+});
