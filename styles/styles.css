@@ -479,7 +479,7 @@ button {
     cursor: pointer;
     font-size: 20px;
     font-family: "Merienda", cursive;
-    width: 25%;
+    width: 50%;
 }
 
 /* Footer */
@@ -648,11 +648,13 @@ button {
     cursor: pointer;
 }
 
-button.boton-adicional {
-    position: unset;
-    margin-top: 5%;
-    width: 50%;
+.boton-adicional {
+    position: absolute;
+    bottom: 15px;
+    right: 10px;
+    width: 25%;
 }
+
 
 /* Estilos para el contenido dentro de los lados del modal */
 .modal-left h2,

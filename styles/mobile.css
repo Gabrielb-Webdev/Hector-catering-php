@@ -166,7 +166,7 @@
     }
     
     .close {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     left: auto;
@@ -206,7 +206,5 @@
         top: 5%;
         width: 50%;
     }
-    button.boton-adicional{
-        
-    }
+    
 }
