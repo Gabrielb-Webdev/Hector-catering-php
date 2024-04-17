@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Función para redireccionar a index.php
     function redirectToIndex() {
-        window.location.href = 'index.php';
+        window.location.href = '../index.php';
     }
 
     // Agregar evento de clic al logo en la barra de navegación

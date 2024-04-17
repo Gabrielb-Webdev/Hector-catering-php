@@ -1,3 +1,6 @@
+<?php include 'backend/estado.php'; ?>
+<?php include 'backend/consultar_imagenes.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,28 +40,56 @@
             <li class="navbar-menu-item"><a href="#">Inicio</a></li>
             <li class="navbar-menu-item"><a href="#">Eventos</a></li>
             <li class="navbar-menu-item"><a href="#">Contacto</a></li>
+            <?php
+            // Verificar si el usuario está autenticado
+            if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
+                echo '<li class="navbar-menu-item"><a href="../backend/logout.php">Cerrar sesión</a></li>';
+            }
+            ?>
         </ul>
     </nav>
 
+<!-- Sección 1: Carrusel de fotos -->
+<section id="inicio" class="swiper-container">
+    <div class="swiper-wrapper">
+        <?php foreach ($imagenes as $imagen): ?>
+            <div class="swiper-slide">
+                <img src="<?php echo $imagen; ?>" alt="Imagen de carrusel" style="cursor: pointer;">
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <!-- Agrega la paginación -->
+    <div class="swiper-pagination"></div>
+</section>
+<!-- Input oculto para cargar imágenes -->
+<input type="file" id="fileInput" accept="image/*" style="display:none;">
+
+<!-- Mostrar los iconos solo si se cumplen las condiciones -->
+<?php if ($showIcons): ?>
+<div class="icons-container">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-plus" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icono1" style="cursor: pointer;">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+        <path d="M9 12h6" />
+        <path d="M12 9v6" />
+    </svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash-x" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icono2" style="cursor: pointer;">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M4 7h16" />
+        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+        <path d="M10 12l4 4m0 -4l-4 4" />
+    </svg>
+</div>
+
+<!-- Solo agregamos el script si se cumplen las condiciones para mostrar los iconos -->
+<script src="scripts/admin.js"></script>
+<?php endif; ?>
 
 
-    <!-- Sección 1: Carrusel de fotos -->
-    <section id="inicio" class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img src="sources/Ambientación.jpeg" alt="Foto 1">
-            </div>
-            <div class="swiper-slide">
-                <img src="sources/barra_libre.jpeg" alt="Foto 2">
-            </div>
-            <div class="swiper-slide">
-                <img src="sources/catering.jpg" alt="Foto 3">
-            </div>
-            <!-- Agrega más divs con la clase "swiper-slide" para más fotos -->
-        </div>
-        <!-- Agrega la paginación -->
-        <div class="swiper-pagination"></div>
-    </section>
+
+
 
     <!-- Sección 2: Información de quienes somos -->
     <section class="quienes-somos">

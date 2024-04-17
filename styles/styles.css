@@ -39,6 +39,7 @@ img{
     width: 20%;
     height: auto;
     margin-left: 20%; /* Reducido el margen izquierdo para ajustarlo */
+    user-select: none;
 }
 
 .logo img:hover,
@@ -71,6 +72,7 @@ img{
 .merienda-custom a {
     color: #f3b01b;
     text-decoration: none; /* Quita el subrayado de los enlaces */
+    user-select: none;
     font-size: 1.2rem;
 }
 
@@ -83,6 +85,7 @@ img{
 .swiper-slide img {
     width: 100%;
     height: 100%;
+    user-select: none;
 }
 
 .swiper-slide{
@@ -135,6 +138,7 @@ img{
 .quienes-somos-img img {
     width: 150px; /* Establece el ancho máximo de las imágenes */
     height: auto; /* La altura se ajustará automáticamente para mantener la proporción de aspecto */
+    user-select: none;
 }
 
 
@@ -186,12 +190,14 @@ img{
     max-width: 5%;
     height: auto;
     margin-left: auto;
+    user-select: none;
 }
 
 .quienes-somos-img-right {
     max-width: 5%;
     height: auto;
     margin-right: auto; 
+    user-select: none;
 }
 
 /* eventos */
@@ -209,6 +215,7 @@ img{
 .eventos-img {
     width: 150px;
     height: auto;
+    user-select: none;
 }
 
 .eventos-titulo {
@@ -358,6 +365,7 @@ img{
     width: 100%; /* Ajusta la imagen al ancho del contenedor */
     height: auto; /* Altura automática para mantener la proporción */
     margin-bottom: 20px; /* Espacio inferior */
+    user-select: none;
 }
 
 /* Agrega estos estilos en tu archivo styles.css */
@@ -378,6 +386,7 @@ img{
     font-weight: 400; /* Cambiado a "regular" */
     font-style: normal;
     font-size: 1.2rem;
+    user-select: none;
 }
 
 .contact-form input,
@@ -512,6 +521,7 @@ button {
     color: #f3b01b;
     font-size: 1.2rem;
     margin-bottom: 15px;
+    user-select: none;
 }
 
 .footer-left img {
@@ -523,6 +533,7 @@ button {
     width: 150px; /* Ajusta el tamaño de la imagen según sea necesario */
     height: auto;
     margin-right: 51px;
+    user-select: none;
 }
 
 .contact-f{
@@ -703,4 +714,18 @@ button {
 
 .modal-right h2 {
     margin-top: 15%; /* Ajusta el margen superior según sea necesario */
+}
+
+/* admin */
+
+svg#icono1,
+svg#icono2{
+    user-select: none;
+}
+
+.icons-container {
+    user-select: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
