@@ -176,6 +176,7 @@
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: center;
+        z-index: 100000;
     }
 
     .modal{
