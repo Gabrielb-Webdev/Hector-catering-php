@@ -139,4 +139,49 @@
     .quienes-somos-img img {
         width: 100%;
     }
+
+    .logo img{
+        margin-left: 10%;
+    }
+}
+
+/* Estilos para dispositivos con menos de 800px de ancho */
+@media (max-width: 800px) {
+    /* Cambia la disposición del modal a columnas */
+    .modal-left,
+    .modal-right {
+        width: 100%; /* Ocupa el 100% del ancho del modal */
+    }
+
+    /* Ajusta el orden y la alineación de los elementos del modal */
+    .modal-left {
+        order: 1; /* Cambia el orden del lado izquierdo del modal */
+    }
+
+    .modal-right {
+        order: 2; /* Cambia el orden del lado derecho del modal */
+    }
+    
+    .close{
+        left: 50%;
+    }
+
+    .modal{
+        flex-direction: column;
+    }
+
+    .modal-right h2{
+        text-align: center;
+    }
+
+    .modal-right p{
+        width: 100%;
+    }
+
+    .quienes-somos-contenido{
+        font-size: 2.5rem;
+    }
+    .eventos-titulo .titulo{
+        font-size: 3.5rem;
+    }
 }

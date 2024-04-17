@@ -534,16 +534,70 @@ button {
 }
 
 /* Estilos para el modal */
+/* Agrega bordes al modal */
 .modal {
-    display: none; /* Oculta el modal por defecto */
-    position: fixed; /* Posición fija */
-    z-index: 1; /* Pone el modal por encima de otros elementos */
+    display: none;
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 175px;
     width: 100%;
-    height: 80%; /* Ajusta la altura del modal */
-    overflow: auto; /* Permite hacer scroll si el contenido es largo */
-    background-color: #25211d;
+    height: 100%;
+    overflow: auto;
+    background-color: #25211d; /* Fondo semitransparente */
+    animation: fadeIn 0.3s ease; /* Animación de entrada */
+    border: 4px solid rgba(255, 255, 255, 0.5); /* Borde blanco transparente */
+    border-radius: 10px; /* Borde redondeado */
+}
+
+/* Agrega un contenedor para el contenido del modal */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: none; /* Quita el borde del contenido */
+    width: 80%;
+    animation: slideIn 0.3s ease; /* Animación de deslizamiento */
+    border-radius: 10px; /* Borde redondeado */
+}
+
+/* Animación de entrada del modal */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Animación de deslizamiento del contenido */
+@keyframes slideIn {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Estilo para el botón de cierre */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: relative;
+    left: 90%;
+    transition: color 0.3s; /* Transición de color */
+}
+
+/* Cambia el color del botón de cierre al pasar el cursor */
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .modal.open {
@@ -622,4 +676,14 @@ button {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+}
+
+.modal-right p{
+    color: #f3b01b;
+    text-align: justify;
+    width: 80%;
+}
+
+.modal-right h2 {
+    margin-top: 15%; /* Ajusta el margen superior según sea necesario */
 }
