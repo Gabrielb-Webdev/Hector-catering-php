@@ -79,6 +79,69 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// mobile.js
 
-// mobile
+document.addEventListener('DOMContentLoaded', function () {
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    const navbarMenu = document.querySelector('.navbar-menu');
+    const menuItems = document.querySelectorAll('.navbar-menu-item');
 
+    mobileMenuButton.addEventListener('click', function () {
+        navbarMenu.classList.toggle('active');
+        mobileMenuButton.classList.toggle('active');
+    });
+
+    // Agregar evento de clic a cada elemento del menú
+    menuItems.forEach(function (menuItem) {
+        menuItem.addEventListener('click', function () {
+            // Ocultar el menú al hacer clic en un elemento
+            navbarMenu.classList.remove('active');
+            mobileMenuButton.classList.remove('active');
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const inicioLink = document.querySelector('.navbar-menu-item:nth-child(1) a');
+    const eventosLink = document.querySelector('.navbar-menu-item:nth-child(2) a');
+    const contactoLink = document.querySelector('.navbar-menu-item:nth-child(3) a');
+
+    // Función para desplazarse suavemente hasta una sección con un pequeño ajuste hacia arriba
+    const scrollToSection = (sectionId, event) => {
+        event.preventDefault(); // Detener el comportamiento predeterminado del navegador
+        const section = document.getElementById(sectionId);
+        if (section) {
+            const navbarHeight = document.querySelector('.navbar').offsetHeight; // Obtener la altura de la barra de navegación
+            const offset = navbarHeight - 0; // Ajustar el offset para desplazarse un poco más arriba
+            const sectionPosition = section.offsetTop - offset; // Calcular la posición de desplazamiento
+            window.scrollTo({ top: sectionPosition, behavior: 'smooth' }); // Desplazarse a la posición calculada suavemente
+        }
+    };
+
+    // Agregar eventos de clic a cada elemento del menú
+    inicioLink.addEventListener('click', (e) => scrollToSection('inicio', e));
+    eventosLink.addEventListener('click', (e) => scrollToSection('eventos', e));
+    contactoLink.addEventListener('click', (e) => scrollToSection('contacto', e));
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const logoLink = document.querySelector('.logo img');
+    const logoFLink = document.querySelector('.img-f');
+
+    // Función para redireccionar a index.php
+    function redirectToIndex() {
+        window.location.href = 'index.php';
+    }
+
+    // Agregar evento de clic al logo en la barra de navegación
+    logoLink.addEventListener('click', function (e) {
+        e.preventDefault(); // Evita el comportamiento predeterminado del enlace
+        redirectToIndex();
+    });
+
+    // Agregar evento de clic al logo en el footer
+    logoFLink.addEventListener('click', function (e) {
+        e.preventDefault(); // Evita el comportamiento predeterminado del enlace
+        redirectToIndex();
+    });
+});

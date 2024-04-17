@@ -21,29 +21,29 @@
 
 </head>
 <body>
-<!-- Barra de navegación -->
-<nav class="navbar">
-    <div class="logo">
-        <img src="sources/LOGO.png" alt="Logo">
-    </div>
-    <!-- Botón de menú de hamburguesa -->
-    <button class="mobile-menu-button">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-    </button>
-    <!-- Lista de menú normal -->
-    <ul class="navbar-menu merienda-custom">
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Eventos</a></li>
-        <li><a href="#">Contacto</a></li>
-    </ul>
-</nav>
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="sources/LOGO.png" alt="Logo">
+        </div>
+        <!-- Botón de menú de hamburguesa -->
+        <button class="mobile-menu-button">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <!-- Lista de menú normal -->
+        <ul class="navbar-menu merienda-custom">
+            <li class="navbar-menu-item"><a href="#">Inicio</a></li>
+            <li class="navbar-menu-item"><a href="#">Eventos</a></li>
+            <li class="navbar-menu-item"><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
 
 
 
     <!-- Sección 1: Carrusel de fotos -->
-    <section class="swiper-container">
+    <section id="inicio" class="swiper-container">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <img src="sources/Ambientación.jpeg" alt="Foto 1">
@@ -81,7 +81,7 @@
     </section>
 
     <!-- Sección 3: Carrusel de Materialize -->
-    <section class="eventos">
+    <section id="eventos" class="eventos">
         <div class="container">
             <div class="row">
                 <div class="col s12">
@@ -147,7 +147,7 @@
     </section>
 
     <!-- Sección 4: Dividido en dos de izquierda a derecha -->
-    <section class="section-four">
+    <section id="contacto" class="section-four">
         <div class="left-half">
             <h2 class="merienda-unique1">¡Contáctanos!</h2>
             <h2 class="merienda-unique2">¿Cómo podemos ayudarte?</h2>

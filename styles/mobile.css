@@ -38,43 +38,43 @@
     }
 
     .navbar-menu {
-        display: none; /* Oculta la lista de menú normal en dispositivos móviles */
+        display: grid; /* Oculta la lista de menú normal en dispositivos móviles */
+        position: absolute;
+        top: 100%; /* Ajusta la posición debajo del botón de hamburguesa */
+        left: 0;
+        width: 100%; /* Ocupa todo el ancho */
+        background-color: #333; /* Color de fondo para el menú desplegable */
+        z-index: 1000; /* Asegura que esté sobre otros elementos */
+        overflow: hidden; /* Oculta cualquier desbordamiento */
+        transition: max-height 0.3s ease; /* Agrega una transición suave */
+        max-height: 0; /* Oculta el menú inicialmente */
     }
 
     .navbar-menu.active {
-        display: flex; /* Muestra la lista de menú normal cuando el botón de menú está activo */
-        flex-direction: column; /* Alinea los elementos verticalmente */
-        background-color: #000; /* Color de fondo para el menú desplegable */
-        position: absolute;
-        width: 100%;
-        top: 60px; /* Ajusta la posición de la lista de menú */
-        left: 0;
-        padding: 20px; /* Espaciado interno */
-        box-sizing: border-box; /* Incluye el padding en el ancho */
+        max-height: 500px; /* Muestra el menú al tener la clase "active" */
     }
 
     .navbar-menu.active li {
-        margin-bottom: 10px; /* Espaciado entre elementos del menú */
+        opacity: 1; /* Muestra los elementos del menú */
+        transition: opacity 0.3s ease; /* Agrega una transición suave */
     }
 
     .quienes-somos-img-right,
-    .quienes-somos-img-left{
+    .quienes-somos-img-left {
         display: none;
     }
-}
 
-.section-four {
-    overflow: hidden;
-    display: flex;
-    flex-wrap: wrap;
-}
+    .section-four {
+        overflow: hidden;
+        display: flex;
+        flex-wrap: wrap;
+    }
 
-.left-half,
-.right-half {
-    flex: 1;
-}
+    .left-half,
+    .right-half {
+        flex: 1;
+    }
 
-@media (max-width: 800px) {
     .section-four {
         flex-direction: column; /* Cambia la dirección a columnas en dispositivos móviles */
     }
@@ -87,51 +87,56 @@
     .right-half {
         order: 1; /* Cambia el orden para que la mitad derecha aparezca primero */
     }
-    
-    .contact-form button{
+
+    .contact-form button {
         width: 50%;
     }
-    .contact-form{
+
+    .contact-form {
         width: 90%;
     }
 
-.footer {
-    background-color: black;
-    color: white;
-    display: flex;
-    justify-content: center; /* Centra los elementos horizontalmente */
-    align-items: center; /* Centra los elementos verticalmente */
-    flex-wrap: wrap; /* Permite que los elementos se ajusten en dispositivos pequeños */
-    padding: 20px;
-}
+    button:focus {
+        background-color: unset;
+    }
 
-.footer-left {
-    display: flex;
-    flex-direction: column; /* Coloca los elementos verticalmente */
-    align-items: center; /* Centra los elementos horizontalmente */
-    margin-bottom: 15px;
-}
+    .footer {
+        background-color: black;
+        color: white;
+        display: flex;
+        justify-content: center; /* Centra los elementos horizontalmente */
+        align-items: center; /* Centra los elementos verticalmente */
+        flex-wrap: wrap; /* Permite que los elementos se ajusten en dispositivos pequeños */
+        padding: 20px;
+    }
 
-.footer-left img {
-    margin-bottom: 15px; /* Añade espacio entre la imagen y el texto */
-}
+    .footer-left {
+        display: flex;
+        flex-direction: column; /* Coloca los elementos verticalmente */
+        align-items: center; /* Centra los elementos horizontalmente */
+        margin-bottom: 15px;
+    }
 
-.footer-right {
-    order: 1; /* Cambia el orden para que el logo aparezca debajo */
-    margin-top: 15px; /* Añade espacio entre el texto y el logo */
-}
+    .footer-left img {
+        margin-bottom: 15px; /* Añade espacio entre la imagen y el texto */
+    }
 
-.footer-left-content{
-    display: flex;
-    flex-direction: column;
-    margin-left: 0;
-}
+    .footer-right {
+        order: 1; /* Cambia el orden para que el logo aparezca debajo */
+        margin-top: 15px; /* Añade espacio entre el texto y el logo */
+    }
 
-.footer-right img{
-    margin-right: 0;
-}
+    .footer-left-content {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0;
+    }
 
-    .quienes-somos-img img{
+    .footer-right img {
+        margin-right: 0;
+    }
+
+    .quienes-somos-img img {
         width: 100%;
     }
 }
