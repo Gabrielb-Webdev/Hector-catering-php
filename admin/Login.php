@@ -1,11 +1,6 @@
 <!-- admin/Login.php -->
 
-<?php
-// session_start(); // Iniciar sesión si no está iniciada
 
-// include '../backend/estado.php'; // Incluir el archivo de estado de sesión
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
