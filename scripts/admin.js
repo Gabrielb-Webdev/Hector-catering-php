@@ -65,3 +65,4 @@ icono2.addEventListener('click', () => {
         xhrDeleteFile.send(`rutaImagen=${rutaImagen}`);
     }
 });
+

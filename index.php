@@ -95,13 +95,26 @@ if (session_status() === PHP_SESSION_NONE) {
         <div class="quienes-somos-img">
             <img src="sources/Bigote-izquierdo.png" alt="Imagen Quiénes somos 1">
         </div>
-            <h2 class="quienes-somos-contenido">
-                <?php include 'backend/section_1_contenido.php'; echo $section_1_titulo; ?>
-            </h2>
+<h2 class="quienes-somos-contenido" id="sectionTitle">
+    <?php include 'backend/section_1_contenido.php'; echo $section_1_titulo; ?>
+</h2>
         <div class="quienes-somos-img">
             <img src="sources/Bigote_derecho.png" alt="Imagen Quiénes somos 2">
         </div>
     </div>
+<div class="icon-center">
+    <?php if (isset($_SESSION['email'])) : ?>
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil-plus" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" id="editIcon" style="cursor: pointer;">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+            <path d="M13.5 6.5l4 4" />
+            <path d="M16 19h6" />
+            <path d="M19 16v6" />
+        </svg>
+    <?php endif; ?>
+</div>
+    <script src="scripts/info.js"></script>
+
     <div class="quienes-somos-text">
         <img src="sources/Tenedor.png" alt="Tenedor" class="quienes-somos-img-left">
         <p class="quienes-somos-text-center">
