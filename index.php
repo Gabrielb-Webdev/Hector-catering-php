@@ -1,4 +1,3 @@
-<?php include 'backend/conexion.php'; ?>
 
 
 <!DOCTYPE html>
