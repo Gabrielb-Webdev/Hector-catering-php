@@ -1,8 +1,9 @@
 <!-- backend/login_process.php -->
 
 <?php
-session_start(); // Iniciar sesión si no está iniciada
-
+if(session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include 'conexion.php'; // Incluir el archivo de conexión a la base de datos
 
 // Obtener los datos del formulario
