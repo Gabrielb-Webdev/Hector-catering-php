@@ -4,65 +4,29 @@
 if(session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-// Datos de conexión a la base de datos
-$servername = "roundhouse.proxy.rlwy.net";
-$username = "root";
-$password = "MKIacdLxZxrjnYHNMGyhQtekMghFKlGq";
-$database = "railway";
-$db_port = "12331";
+include 'conexion.php'; // Incluir el archivo de conexión a la base de datos
 
-// Inicializar mensaje vacío
-$message = "";
+// Obtener los datos del formulario
+$email = $_POST['email'];
+$password = $_POST['password'];
 
-// Verificar si se ha mostrado la alerta anteriormente
-if (isset($_SESSION['alert_displayed']) && $_SESSION['alert_displayed'] === true) {
-    // Limpiar la variable de sesión
-    unset($_SESSION['alert_displayed']);
+// Consultar la base de datos para verificar las credenciales
+$query = "SELECT * FROM usuarios WHERE email = '$email' AND password = '$password'";
+$result = $conn->query($query);
+
+if ($result->num_rows == 1) {
+    // Las credenciales son correctas, iniciar sesión
+    $_SESSION['logged_in'] = true;
+    $_SESSION['email'] = $email;
+    $_SESSION['success'] = "Inicio de sesión exitoso";
+    
+    // Redirigir a index.php
+    header("Location: ../index.php");
+    exit();
 } else {
-    // Verificar si se enviaron datos del formulario
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Crear la conexión a la base de datos
-        $conn = mysqli_connect($servername, $username, $password, $database, $db_port);
-
-        // Verificar la conexión
-        if (!$conn) {
-            die("Error de conexión: " . mysqli_connect_error());
-        }
-
-        // Recuperar los valores del formulario y limpiarlos
-        $email = mysqli_real_escape_string($conn, $_POST['email']);
-        $contrasena = mysqli_real_escape_string($conn, $_POST['contrasena']);
-        
-        // Consulta SQL preparada para verificar las credenciales
-        $sql = "SELECT * FROM email WHERE email = ? OR email = ?";
-        $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, "ss", $email, $email);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-        
-        if (mysqli_num_rows($result) == 1) {
-            // Usuario encontrado, verificar la password
-            $row = mysqli_fetch_assoc($result);
-            if (password_verify($contrasena, $row['password'])) {
-                // password correcta, iniciar sesión y redirigir al email
-                $_SESSION['email'] = $row['email']; // Puedes almacenar más información del email si lo deseas
-                header("Location: ../index.php"); // Redirigir al email a la página principal
-                exit();
-            } else {
-                // password incorrecta
-                $message = "Usuario o password incorrecta";
-                $_SESSION['alert_displayed'] = true; // Marcar que se ha mostrado la alerta
-                echo "<script>alert('$message');</script>"; // Mostrar alerta con JavaScript
-                echo "<script>window.location.href = '../Login.php';</script>"; // Redirigir a Login.php con JavaScript
-                exit();
-            }
-        } else {
-            // Usuario no encontrado
-            $message = "Usuario o password incorrecta";
-            $_SESSION['alert_displayed'] = true; // Marcar que se ha mostrado la alerta
-            echo "<script>alert('$message');</script>"; // Mostrar alerta con JavaScript
-            echo "<script>window.location.href = '../Login.php';</script>"; // Redirigir a Login.php con JavaScript
-            exit();
-        }
-    }
+    // Credenciales incorrectas, mostrar mensaje de error y redirigir al formulario de inicio de sesión
+    $_SESSION['error'] = "Correo electrónico o contraseña incorrectos";
+    header("Location: ../admin/Login.php");
+    exit();
 }
+?>

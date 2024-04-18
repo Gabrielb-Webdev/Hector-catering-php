@@ -65,8 +65,8 @@
 <input type="file" id="fileInput" accept="image/*" style="display:none;">
 
 <!-- Mostrar los iconos solo si se cumplen las condiciones -->
-<?php if ($showIcons): ?>
-<div class="icons-container">
+<?php if (isset($_SESSION['email'])) : ?>
+    <div class="icons-container">
     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-plus" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icono1" style="cursor: pointer;">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
         <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
