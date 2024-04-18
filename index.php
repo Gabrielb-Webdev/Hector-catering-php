@@ -1,5 +1,5 @@
-<?php include 'backend/estado.php'; ?>
-<?php include 'backend/consultar_imagenes.php'; ?>
+<?php include 'backend/conexion.php'; ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

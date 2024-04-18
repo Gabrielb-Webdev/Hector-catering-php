@@ -1,7 +1,5 @@
 <!-- backend/login_process.php -->
 <?php
-session_start(); // Esta línea debería ser la primera línea del archivo
-
 include 'conexion.php'; // Incluir el archivo de conexión a la base de datos
 
 // Obtener los datos del formulario
