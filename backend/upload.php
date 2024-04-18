@@ -3,7 +3,7 @@
 include 'conexion.php';
 
 // Incluir el archivo de estado para obtener la información de la sesión
-// include 'estado.php';
+include 'estado.php';
 
 // Verificar si se recibió un archivo
 if (isset($_FILES['file'])) {

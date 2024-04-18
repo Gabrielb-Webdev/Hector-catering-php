@@ -1,5 +1,5 @@
 <?php
-
+// Incluir archivo de conexión a la base de datos
 include 'conexion.php';
 
 // Consultar las imágenes desde la base de datos

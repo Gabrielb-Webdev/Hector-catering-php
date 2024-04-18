@@ -1,6 +1,8 @@
 <!-- logout.php -->
 
 <?php
+// Iniciar la sesión si aún no está iniciada
+session_start();
 
 // Destruir todas las variables de sesión
 $_SESSION = array();
