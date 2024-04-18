@@ -1,5 +1,7 @@
 <?php
-// Incluir archivo de conexión a la base de datos
+if(session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include 'conexion.php';
 
 // Consultar las imágenes desde la base de datos
