@@ -20,13 +20,13 @@ $result = $conn->query($sql);
 
 // Verificar si se encontraron resultados
 if ($result->num_rows > 0) {
-    // Mostrar el título
-    while($row = $result->fetch_assoc()) {
-        echo "<h2 class='quienes-somos-contenido'>" . $row["section_1_titulo"] . "</h2>";
-    }
+    // Obtener el título de la sección 1
+    $row = $result->fetch_assoc();
+    $section_1_titulo = $row["section_1_titulo"];
 } else {
-    echo "No se encontraron resultados";
+    $section_1_titulo = "Título por defecto";
 }
 
 // Cerrar conexión
 $conn->close();
+?>

@@ -127,7 +127,7 @@ $conn->close();
             <img src="sources/Bigote-izquierdo.png" alt="Imagen Quiénes somos 1">
         </div>
             <h2 class="quienes-somos-contenido">
-                <?php echo $section_1_titulo; ?>
+                <?php include 'section_1.php'; echo $section_1_titulo; ?>
             </h2>
         <div class="quienes-somos-img">
             <img src="sources/Bigote_derecho.png" alt="Imagen Quiénes somos 2">
