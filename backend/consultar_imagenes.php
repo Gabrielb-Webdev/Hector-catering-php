@@ -1,7 +1,5 @@
 <?php
-if(session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+
 include 'conexion.php';
 
 // Consultar las imágenes desde la base de datos

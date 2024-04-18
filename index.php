@@ -1,4 +1,5 @@
 <?php include 'backend/consultar_imagenes.php'; ?>
+<?php include 'backend/conexion.php'; ?>
 <?php // include 'backend/estado.php'; ?>
 
 <!DOCTYPE html>
