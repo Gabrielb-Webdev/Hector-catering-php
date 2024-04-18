@@ -1,8 +1,4 @@
 <?php
-// Iniciar la sesión si aún no está iniciada
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
 
 // Verificar si el usuario está logeado
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
