@@ -27,4 +27,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['error'] = "Correo electrónico o contraseña incorrectos";
     }
 }
-?>
