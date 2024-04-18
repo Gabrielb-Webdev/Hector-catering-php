@@ -2,37 +2,6 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
-// Datos de conexión a la base de datos
-$servername = "roundhouse.proxy.rlwy.net";
-$username = "root";
-$password = "MKIacdLxZxrjnYHNMGyhQtekMghFKlGq";
-$database = "railway";
-$db_port = "12331";
-
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $database, $db_port);
-
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
-}
-
-// Consulta SQL para obtener el título de la sección 1
-$sql = "SELECT section_1_titulo FROM section_1";
-$result = $conn->query($sql);
-
-// Verificar si se encontraron resultados
-if ($result->num_rows > 0) {
-    // Obtener el título de la sección 1
-    $row = $result->fetch_assoc();
-    $section_1_titulo = $row["section_1_titulo"];
-} else {
-    $section_1_titulo = "Título por defecto";
-}
-
-// Cerrar conexión
-$conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -127,7 +96,7 @@ $conn->close();
             <img src="sources/Bigote-izquierdo.png" alt="Imagen Quiénes somos 1">
         </div>
             <h2 class="quienes-somos-contenido">
-                <?php include 'section_1.php'; echo $section_1_titulo; ?>
+                <?php include 'backend/section_1.php'; echo $section_1_titulo; ?>
             </h2>
         <div class="quienes-somos-img">
             <img src="sources/Bigote_derecho.png" alt="Imagen Quiénes somos 2">
