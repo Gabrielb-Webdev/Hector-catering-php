@@ -10,20 +10,6 @@
 <body>
     <h2>Iniciar sesión</h2>
     
-    <?php
-    // Mostrar alerta de éxito si existe
-    if(isset($_SESSION['success'])) {
-        echo '<div style="color: green;">' . $_SESSION['success'] . '</div>';
-        unset($_SESSION['success']); // Eliminar el mensaje de éxito para evitar que se muestre de nuevo
-    }
-    
-    // Mostrar alerta de error si existe
-    if(isset($_SESSION['error'])) {
-        echo '<div style="color: red;">' . $_SESSION['error'] . '</div>';
-        unset($_SESSION['error']); // Eliminar el mensaje de error para evitar que se muestre de nuevo
-    }
-    ?>
-    
     <form action="../backend/login_process.php" method="post">
         <label for="email">Correo electrónico:</label><br>
         <input type="email" id="email" name="email" required><br><br>
