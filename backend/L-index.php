@@ -1,6 +1,7 @@
 <?php
-session_start(); // Inicia la sesión
-
+if(session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 // Verifica si se recibió una solicitud POST para iniciar sesión
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtén los datos del formulario de inicio de sesión
