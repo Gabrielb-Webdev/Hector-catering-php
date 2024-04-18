@@ -1,6 +1,7 @@
 <?php
-// Inicializar una variable de sesión para almacenar el correo electrónico del usuario
-session_start();
+if(session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Verificar si ya hay una sesión iniciada
 if(isset($_SESSION['email'])) {
