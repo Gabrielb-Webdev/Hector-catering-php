@@ -60,6 +60,7 @@
     <!-- Agrega la paginación -->
     <div class="swiper-pagination"></div>
 </section>
+
 <!-- Input oculto para cargar imágenes -->
 <input type="file" id="fileInput" accept="image/*" style="display:none;">
 
