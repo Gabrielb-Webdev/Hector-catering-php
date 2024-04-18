@@ -1,4 +1,4 @@
-<?php include 'backend/consultar_imagenes.php'; ?>
+<?php include 'backend/estado.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
