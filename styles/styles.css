@@ -738,3 +738,7 @@ svg#icono2{
     position: relative;
     bottom: 20px;
 }
+
+.abajo {
+    top: 20px;
+}

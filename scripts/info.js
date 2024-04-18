@@ -4,7 +4,7 @@ function activateEditMode() {
     if (sectionTitle) {
         const titleText = sectionTitle.innerText;
         sectionTitle.innerHTML = `<input type="text" id="editTitleInput" value="${titleText}" style="width: 100%;">
-                                   <button id="acceptButton" class="accept-button">Aceptar</button>`;
+                                   <button id="acceptButton" class="accept-button">Guardar</button>`;
         const editTitleInput = document.getElementById('editTitleInput');
         editTitleInput.focus();
 

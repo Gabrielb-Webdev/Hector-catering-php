@@ -113,15 +113,27 @@ if (session_status() === PHP_SESSION_NONE) {
         </svg>
     <?php endif; ?>
 </div>
-    <script src="scripts/info.js"></script>
+<script src="scripts/info.js"></script>
 
     <div class="quienes-somos-text">
         <img src="sources/Tenedor.png" alt="Tenedor" class="quienes-somos-img-left">
-        <p class="quienes-somos-text-center">
+        <p class="quienes-somos-text-center" id="sectionDescripcion">
               <?php include 'backend/section_1_contenido.php'; echo $section_1_contenido; ?>
         </p>
         <img src="sources/Cuchillo.png" alt="Cuchillo" class="quienes-somos-img-right">
     </div>
+<div class="icon-center abajo">
+    <?php if (isset($_SESSION['email'])) : ?>
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil-plus" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" id="editDescriptionIcon" style="cursor: pointer;">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+            <path d="M13.5 6.5l4 4" />
+            <path d="M16 19h6" />
+            <path d="M19 16v6" />
+        </svg>
+    <?php endif; ?>
+</div>
+<script src="scripts/des.js"></script>
 </section>
 
     <!-- Sección 3: Carrusel de Materialize -->
