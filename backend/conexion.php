@@ -1,7 +1,6 @@
 <!-- backend/conexion.php -->
 
 <?php
-session_start(); // Iniciar sesión si no está iniciada
 
 // Datos de conexión a la base de datos
 $servername = "roundhouse.proxy.rlwy.net";
