@@ -34,3 +34,34 @@ fileInput.addEventListener('change', (event) => {
     }
 });
 
+// Agregar evento de clic al icono icon-tabler-trash-x
+const icono2 = document.querySelector('.icon-tabler-trash-x');
+icono2.addEventListener('click', () => {
+    // Mostrar mensaje de confirmación
+    if (confirm('¿Estás seguro de querer borrar esta imagen?')) {
+        // Obtener la imagen actualmente visible en el carrusel
+        const imagenActual = document.querySelector('.swiper-slide-active img');
+        // Obtener la ruta relativa de la imagen en el proyecto
+        const rutaImagen = imagenActual.getAttribute('src');
+
+        // Mostrar la ruta de la imagen en la consola
+        console.log('Ruta de la imagen a borrar:', rutaImagen);
+
+        // Enviar una solicitud AJAX para eliminar la imagen del proyecto
+        const xhrDeleteFile = new XMLHttpRequest();
+        xhrDeleteFile.open('POST', 'backend/delete.php'); // Cambia la ruta según corresponda
+        xhrDeleteFile.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhrDeleteFile.onload = function () {
+            if (xhrDeleteFile.status === 200) {
+                console.log(xhrDeleteFile.responseText);
+                // Recargar la página después de la eliminación exitosa
+                location.reload();
+            } else {
+                console.error('Error al intentar eliminar el archivo del sistema de archivos.');
+            }
+        };
+
+        // Enviar la ruta relativa de la imagen al servidor para eliminar el archivo del sistema de archivos
+        xhrDeleteFile.send(`rutaImagen=${rutaImagen}`);
+    }
+});
