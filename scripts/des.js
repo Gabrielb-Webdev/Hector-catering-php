@@ -31,6 +31,9 @@ function saveEditedDescription() {
         // Aquí enviarías la descripción editada al backend para guardarla en la base de datos
         // Por ahora, simplemente la mostraremos en la descripción como texto
         sectionDescription.innerHTML = editedDescription;
+
+        // Eliminar la clase 'white' al guardar los cambios
+        sectionDescription.classList.remove('white');
     }
 }
 
