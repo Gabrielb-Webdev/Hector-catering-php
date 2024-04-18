@@ -1,6 +1,8 @@
 <!-- backend/login_process.php -->
 
 <?php
+session_start(); // Iniciar sesión si no está iniciada
+
 include 'conexion.php'; // Incluir el archivo de conexión a la base de datos
 
 // Obtener los datos del formulario
@@ -26,4 +28,3 @@ if ($result->num_rows == 1) {
     header("Location: ../admin/Login.php");
     exit();
 }
-?>
