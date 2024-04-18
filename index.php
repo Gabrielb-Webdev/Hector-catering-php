@@ -1,4 +1,3 @@
-<?php include 'backend/consultar_imagenes.php'; ?>
 <?php if(session_status() === PHP_SESSION_NONE) {
     session_start();
 } ?>
@@ -51,6 +50,7 @@
 <!-- Sección 1: Carrusel de fotos -->
 <section id="inicio" class="swiper-container">
     <div class="swiper-wrapper">
+        <?php include 'backend/consultar_imagenes.php'; ?>
         <?php foreach ($imagenes as $imagen): ?>
             <div class="swiper-slide">
                 <img src="<?php echo $imagen; ?>" alt="Imagen de carrusel" style="cursor: pointer;">
