@@ -96,7 +96,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <img src="sources/Bigote-izquierdo.png" alt="Imagen Quiénes somos 1">
         </div>
             <h2 class="quienes-somos-contenido">
-                <?php include 'backend/section_1.php'; echo $section_1_titulo; ?>
+                <?php include 'backend/section_1_contenido.php'; echo $section_1_titulo; ?>
             </h2>
         <div class="quienes-somos-img">
             <img src="sources/Bigote_derecho.png" alt="Imagen Quiénes somos 2">
@@ -105,7 +105,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <div class="quienes-somos-text">
         <img src="sources/Tenedor.png" alt="Tenedor" class="quienes-somos-img-left">
         <p class="quienes-somos-text-center">
-            Somos una empresa con más de 14 años dedicados a ofrecer el mejor servicio para distintos eventos con un gran equipo de profesionales en todas las áreas que se requieren. Tenemos distintas opciones en las que preparamos a las necesidades de nuestros clientes. Nuestra experiencia de trabajar en grandes restaurantes en embajadas como la de Chile, Perú , Uruguay y sobre todo estar en este hermoso país que es Argentina las cuales nos da la opción detener variedades de asados con las más finas carnes el gusto de cliente y sobre todo funcionando los bocaditos y productos internacionales. No lo dude será una experiencia inolvidable para tu evento!
+              <?php include 'backend/section_1_contenido.php'; echo $section_1_contenido; ?>
         </p>
         <img src="sources/Cuchillo.png" alt="Cuchillo" class="quienes-somos-img-right">
     </div>
@@ -121,7 +121,7 @@ if (session_status() === PHP_SESSION_NONE) {
                             <img src="sources/Bigote-izquierdo.png" alt="Imagen de evento izquierda">
                         </div>
                         <div class="eventos-titulo">
-                            <h2 class="titulo">Eventos</h2>
+                            <h2 class="titulo"><?php include 'backend/eventos.php'; echo $eventos_titulo; ?></h2>
                         </div>
                         <div class="eventos-img">
                             <img src="sources/Bigote_derecho.png" alt="Imagen de evento derecha">
