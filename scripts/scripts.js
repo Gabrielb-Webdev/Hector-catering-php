@@ -26,23 +26,37 @@ document.addEventListener('DOMContentLoaded', function () {
             // Obtén el data-evento-id del botón clickeado
             var eventoId = this.getAttribute("data-evento-id");
 
-            // Muestra el evento_id en la consola
-            console.log("Evento ID:", eventoId);
-
             // Hacer una solicitud AJAX para obtener los detalles del evento seleccionado
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === XMLHttpRequest.DONE) {
                     if (xhr.status === 200) {
                         // Parsea la respuesta JSON para obtener los detalles del evento
-                        var evento = JSON.parse(xhr.responseText);
+                        var respuesta = JSON.parse(xhr.responseText);
 
                         // Obtén el modal correspondiente por su id
                         var modal = document.getElementById("myModal");
 
                         // Rellenar el modal con la información del evento seleccionado
                         var modalLeft = modal.querySelector(".modal-left h2");
-                        modalLeft.textContent = evento.titulo_img_carousel;
+                        modalLeft.textContent = respuesta.titulo;
+
+                        // Llena el carrusel con las imágenes del evento
+                        var swiperWrapper = modal.querySelector(".swiper-wrapper");
+                        swiperWrapper.innerHTML = ""; // Vacía el contenido actual del carrusel
+
+                        // Llena el carrusel con las imágenes del evento
+                        respuesta.imagenes.forEach(function (imagenSrc) {
+                            var swiperSlide = document.createElement("div");
+                            swiperSlide.className = "swiper-slide";
+                            var img = document.createElement("img");
+                            // Utiliza la ruta relativa completa para cargar la imagen
+                            img.src = imagenSrc;
+                            img.alt = "Imagen del evento";
+                            swiperSlide.appendChild(img);
+                            swiperWrapper.appendChild(swiperSlide);
+                        });
+
 
                         // Muestra el modal
                         modal.style.display = "flex"; // Cambia el display a flex

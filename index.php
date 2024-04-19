@@ -240,11 +240,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <h2></h2>
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="sources/Ambientación.jpeg" alt="Imagen 1" /></div>
-                <div class="swiper-slide"><img src="sources/Iluminación_y_Sonido.jpeg" alt="Imagen 2" /></div>
-                <div class="swiper-slide"><img src="sources/Ambientación.jpeg" alt="Imagen 3" /></div>
-                <div class="swiper-slide"><img src="sources/Iluminación_y_Sonido.jpeg" alt="Imagen 4" /></div>
-                <!-- Agrega más imágenes si es necesario -->
+                <div class="swiper-slide"></div>
             </div>
             <!-- Agrega la paginación si lo deseas -->
             <div class="swiper-pagination"></div>
