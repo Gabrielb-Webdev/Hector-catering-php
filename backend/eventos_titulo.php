@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 }
 
 // Consulta SQL para obtener el título de eventos
-$sql = "SELECT eventos_titulo FROM eventos";
+$sql = "SELECT eventos_titulo FROM eventos_titulo";
 $result = $conn->query($sql);
 
 // Verificar si se encontraron resultados

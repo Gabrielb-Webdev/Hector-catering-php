@@ -147,7 +147,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         </div>
                         <div class="eventos-titulo">
     <h2 class="titulo" id="eventosTitulo">
-        <?php include 'backend/eventos.php'; echo $eventos_titulo; ?>
+        <?php include 'backend/eventos_titulo.php'; echo $eventos_titulo; ?>
     </h2>
                         </div>
                         <div class="eventos-img">
@@ -165,7 +165,7 @@ if (session_status() === PHP_SESSION_NONE) {
         </svg>
 <?php endif; ?>
 </div>
-<script src="scripts/eventos.js"></script>
+<script src="scripts/eventos_titulo.js"></script>
 
                     <div class="carousel center-align">
                         <div class="carousel-item">

@@ -19,9 +19,9 @@ if (isset($_POST['eventos_titulo'])) {
     $eventos_titulo_editado = $_POST['eventos_titulo'];
 
     // Actualizar el título en la base de datos
-    $sql = "UPDATE eventos SET eventos_titulo = '$eventos_titulo_editado'";
+    $sql = "UPDATE eventos_titulo SET eventos_titulo = '$eventos_titulo_editado'";
     if ($conn->query($sql) === TRUE) {
-        echo "Título de eventos actualizado correctamente";
+        echo "Título de eventos_titulo actualizado correctamente";
     } else {
         echo "Error al actualizar el título de eventos: " . $conn->error;
     }
