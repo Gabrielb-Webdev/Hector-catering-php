@@ -43,7 +43,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <li class="navbar-menu-item"><a href="#">Eventos</a></li>
             <li class="navbar-menu-item"><a href="#">Contacto</a></li>
             <?php if (isset($_SESSION['email'])) : ?>
-                <li class="navbar-menu-item"><a href="../backend/logout.php">Cerrar sesión</a></li>
+                <li class="navbar-menu-item"><a href="backend/logout.php">Cerrar sesión</a></li>
             <?php endif; ?>
 
         </ul>
@@ -167,50 +167,20 @@ if (session_status() === PHP_SESSION_NONE) {
 </div>
 <script src="scripts/eventos_titulo.js"></script>
 
-                    <div class="carousel center-align">
-                        <div class="carousel-item">
-                            <h2 class="subtitulo">Donas</h2>
-                            <div class="linea-division"></div>
-                            <p class="sabor">Glaseadas</p>
-                            <img class="caru-hover" src="sources/catering.jpeg" alt="">
-                            <button class="verMasBtn" data-id="1">Ver más</button>
-                        </div>
-                        <div class="carousel-item">
-                            <h2 class="subtitulo">Donas</h2>
-                            <div class="linea-division"></div>
-                            <p class="sabor">Glaseadas</p>
-                            <img class="caru-hover" src="sources/Iluminación_y_Sonido.jpeg" alt="">
-                            <button class="verMasBtn" data-id="2">Ver más</button>
-                        </div>
-                        <div class="carousel-item">
-                            <h2 class="subtitulo">Donas</h2>
-                            <div class="linea-division"></div>
-                            <p class="sabor">Glaseadas</p>
-                            <img class="caru-hover" src="sources/catering.jpg" alt="">
-                            <button class="verMasBtn" data-id="3">Ver más</button>
-                        </div>
-                        <div class="carousel-item">
-                            <h2 class="subtitulo">Donas</h2>
-                            <div class="linea-division"></div>
-                            <p class="sabor">Glaseadas</p>
-                            <img class="caru-hover" src="sources/catering.jpeg" alt="">
-                            <button class="verMasBtn" data-id="4">Ver más</button>
-                        </div>
-                        <div class="carousel-item">
-                            <h2 class="subtitulo">Donas</h2>
-                            <div class="linea-division"></div>
-                            <p class="sabor">Glaseadas</p>
-                            <img class="caru-hover" src="sources/test.jpeg" alt="">
-                            <button class="verMasBtn" data-id="5">Ver más</button>
-                        </div>
-                        <div class="carousel-item">
-                            <h2 class="subtitulo">Donas</h2>
-                            <div class="linea-division"></div>
-                            <p class="sabor">Glaseadas</p>
-                            <img class="caru-hover" src="sources/Ambientación.jpeg" alt="">
-                            <button class="verMasBtn" data-id="6">Ver más</button>
-                        </div>
-                    </div>
+<!-- Sección de carrusel de eventos -->
+<div class="carousel center-align">
+    <?php include 'backend/consultar_detalle_eventos.php'; ?>
+    <?php foreach ($detalles_eventos as $evento): ?>
+        <div class="carousel-item">
+            <h2 class="subtitulo"><?php echo $evento["titulo_img_carousel"]; ?></h2>
+            <div class="linea-division"></div>
+            <p class="sabor"><?php echo $evento["descripcion_corta"]; ?></p>
+            <img class="caru-hover" src="<?php echo $evento["img_carousel"]; ?>" alt="">
+            <button class="verMasBtn">Ver más</button>
+        </div>
+    <?php endforeach; ?>
+</div>
+
                 </div>
             </div>
         </div>
