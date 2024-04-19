@@ -29,8 +29,27 @@ function saveEditedDescription() {
     const sectionDescription = document.getElementById('sectionDescripcion');
     if (sectionDescription) {
         // Aquí enviarías la descripción editada al backend para guardarla en la base de datos
-        // Por ahora, simplemente la mostraremos en la descripción como texto
-        sectionDescription.innerHTML = editedDescription;
+        // Usaremos AJAX para enviar una solicitud POST al archivo PHP
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'backend/guardar_descripcion.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // La solicitud se completó correctamente
+                    // Puedes manejar la respuesta del servidor aquí si es necesario
+                    console.log('Descripción guardada correctamente');
+                } else {
+                    // Error en la solicitud
+                    console.error('Error al guardar la descripción:', xhr.status);
+                }
+            }
+        };
+        xhr.send('descripcion=' + encodeURIComponent(editedDescription));
+        
+        // Actualizamos la descripción mostrada en la página
+        sectionDescription.innerText = editedDescription;
 
         // Eliminar la clase 'white' al guardar los cambios
         sectionDescription.classList.remove('white');
@@ -53,3 +72,4 @@ const editDescriptionIcon = document.getElementById('editDescriptionIcon');
 if (editDescriptionIcon) {
     editDescriptionIcon.addEventListener('click', activateEditDescriptionAndAddClass);
 }
+

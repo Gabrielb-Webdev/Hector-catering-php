@@ -32,8 +32,27 @@ function saveEditedTitle() {
     const sectionTitle = document.getElementById('sectionTitle');
     if (sectionTitle) {
         // Aquí enviarías el título editado al backend para guardarlo en la base de datos
-        // Por ahora, simplemente lo mostraremos en el título como texto
-        sectionTitle.innerHTML = editedTitle;
+        // Usaremos AJAX para enviar una solicitud POST al archivo PHP
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'backend/guardar_titulo.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // La solicitud se completó correctamente
+                    // Puedes manejar la respuesta del servidor aquí si es necesario
+                    console.log('Título guardado correctamente');
+                } else {
+                    // Error en la solicitud
+                    console.error('Error al guardar el título:', xhr.status);
+                }
+            }
+        };
+        xhr.send('titulo=' + encodeURIComponent(editedTitle));
+        
+        // Actualizamos el título mostrado en la página
+        sectionTitle.innerText = editedTitle;
 
         // Eliminar la clase 'white' al guardar los cambios
         sectionTitle.classList.remove('white');
@@ -56,3 +75,4 @@ const editIcon = document.getElementById('editIcon');
 if (editIcon) {
     editIcon.addEventListener('click', activateEditModeAndAddClass);
 }
+
