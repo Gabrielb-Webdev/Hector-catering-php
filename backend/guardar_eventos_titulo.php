@@ -15,18 +15,18 @@ if ($conn->connect_error) {
 }
 
 // Verificar si se recibió el título editado
-if (isset($_POST['titulo'])) {
-    $titulo_editado = $_POST['titulo'];
+if (isset($_POST['eventos_titulo'])) {
+    $eventos_titulo_editado = $_POST['eventos_titulo'];
 
     // Actualizar el título en la base de datos
-    $sql = "UPDATE section_1 SET section_1_titulo = '$titulo_editado'";
+    $sql = "UPDATE eventos SET eventos_titulo = '$eventos_titulo_editado'";
     if ($conn->query($sql) === TRUE) {
-        echo "Título actualizado correctamente";
+        echo "Título de eventos actualizado correctamente";
     } else {
-        echo "Error al actualizar el título: " . $conn->error;
+        echo "Error al actualizar el título de eventos: " . $conn->error;
     }
 } else {
-    echo "No se recibió el título editado";
+    echo "No se recibió el título de eventos editado";
 }
 
 // Cerrar conexión

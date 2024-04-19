@@ -46,3 +46,4 @@ if (isset($_FILES['file'])) {
 
 // Cerrar la conexión a la base de datos
 $conn->close();
+?>
