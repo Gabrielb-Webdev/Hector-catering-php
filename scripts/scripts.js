@@ -23,17 +23,39 @@ document.addEventListener('DOMContentLoaded', function () {
     // Recorre cada botón y agrega un evento clic para mostrar el modal correspondiente
     verMasBtns.forEach(btn => {
         btn.addEventListener("click", function () {
-            // Obtén el data-id del botón clickeado
-            var modalId = this.getAttribute("data-id");
+            // Obtén el data-evento-id del botón clickeado
+            var eventoId = this.getAttribute("data-evento-id");
 
-            // Obtén el modal correspondiente por su id
-            var modal = document.getElementById("myModal");
+            // Muestra el evento_id en la consola
+            console.log("Evento ID:", eventoId);
 
-            // Muestra el modal
-            modal.style.display = "flex"; // Cambia el display a flex
+            // Hacer una solicitud AJAX para obtener los detalles del evento seleccionado
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Parsea la respuesta JSON para obtener los detalles del evento
+                        var evento = JSON.parse(xhr.responseText);
 
-            // Aplica un estilo al body para ocultar el scroll
-            document.body.style.overflow = "hidden";
+                        // Obtén el modal correspondiente por su id
+                        var modal = document.getElementById("myModal");
+
+                        // Rellenar el modal con la información del evento seleccionado
+                        var modalLeft = modal.querySelector(".modal-left h2");
+                        modalLeft.textContent = evento.titulo_img_carousel;
+
+                        // Muestra el modal
+                        modal.style.display = "flex"; // Cambia el display a flex
+
+                        // Aplica un estilo al body para ocultar el scroll
+                        document.body.style.overflow = "hidden";
+                    } else {
+                        console.error("Error al obtener los detalles del evento.");
+                    }
+                }
+            };
+            xhr.open("GET", "backend/obtener_detalles_evento.php?evento_id=" + eventoId, true);
+            xhr.send();
         });
     });
 

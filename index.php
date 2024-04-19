@@ -170,15 +170,16 @@ if (session_status() === PHP_SESSION_NONE) {
 <!-- Sección de carrusel de eventos -->
 <div class="carousel center-align">
     <?php include 'backend/consultar_detalle_eventos.php'; ?>
-    <?php foreach ($detalles_eventos as $evento): ?>
-        <div class="carousel-item">
-            <h2 class="subtitulo"><?php echo $evento["titulo_img_carousel"]; ?></h2>
-            <div class="linea-division"></div>
-            <p class="sabor"><?php echo $evento["descripcion_corta"]; ?></p>
-            <img class="caru-hover" src="<?php echo $evento["img_carousel"]; ?>" alt="">
-            <button class="verMasBtn">Ver más</button>
-        </div>
-    <?php endforeach; ?>
+<?php foreach ($detalles_eventos as $evento): ?>
+    <div class="carousel-item">
+        <h2 class="subtitulo"><?php echo $evento["titulo_img_carousel"]; ?></h2>
+        <div class="linea-division"></div>
+        <p class="sabor"><?php echo $evento["descripcion_corta"]; ?></p>
+        <img class="caru-hover" src="<?php echo $evento["img_carousel"]; ?>" alt="">
+        <!-- Aquí se incluye el evento_id como un atributo data-evento-id -->
+        <button class="verMasBtn" data-evento-id="<?php echo $evento['evento_id']; ?>">Ver más</button>
+    </div>
+<?php endforeach; ?>
 </div>
 
                 </div>
@@ -233,30 +234,29 @@ if (session_status() === PHP_SESSION_NONE) {
         </div>
     </footer>
 
-     <!-- Modal -->
-    <div id="myModal" class="modal">
-        <div class="modal-left">
-            <span class="close">&times;</span>
-            <h2>Lado Izquierdo</h2>
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="sources/Ambientación.jpeg" alt="Imagen 1" /></div>
-                    <div class="swiper-slide"><img src="sources/Iluminación_y_Sonido.jpeg" alt="Imagen 2" /></div>
-                    <div class="swiper-slide"><img src="sources/Ambientación.jpeg" alt="Imagen 3" /></div>
-                    <div class="swiper-slide"><img src="sources/Iluminación_y_Sonido.jpeg" alt="Imagen 4" /></div>
-                    <!-- Agrega más imágenes si es necesario -->
-                </div>
-                <!-- Agrega la paginación si lo deseas -->
-                <div class="swiper-pagination"></div>
+<div id="myModal" class="modal">
+    <div class="modal-left">
+        <span class="close">&times;</span>
+        <h2></h2>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="sources/Ambientación.jpeg" alt="Imagen 1" /></div>
+                <div class="swiper-slide"><img src="sources/Iluminación_y_Sonido.jpeg" alt="Imagen 2" /></div>
+                <div class="swiper-slide"><img src="sources/Ambientación.jpeg" alt="Imagen 3" /></div>
+                <div class="swiper-slide"><img src="sources/Iluminación_y_Sonido.jpeg" alt="Imagen 4" /></div>
+                <!-- Agrega más imágenes si es necesario -->
             </div>
-        </div>
-        <div class="modal-right">
-            <h2 class="">Lado Derecho</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <!-- Botón adicional -->
-        <button class="boton-adicional">Botón Adicional</button>
+            <!-- Agrega la paginación si lo deseas -->
+            <div class="swiper-pagination"></div>
         </div>
     </div>
+    <div class="modal-right">
+        <h2 class="">Lado Derecho</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <!-- Botón adicional -->
+        <button class="boton-adicional">Botón Adicional</button>
+    </div>
+</div>
 
 
     <!-- Materialize.js -->

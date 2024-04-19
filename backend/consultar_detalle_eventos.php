@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 }
 
 // Consulta para obtener los detalles de los eventos
-$sql = "SELECT img_carousel, titulo_img_carousel, descripcion_corta, carousel_detail_img, detail_titulo, detail_producto FROM detalle_eventos";
+$sql = "SELECT evento_id, img_carousel, titulo_img_carousel, descripcion_corta, carousel_detail_img, detail_titulo, detail_producto FROM detalle_eventos";
 $result = $conn->query($sql);
 
 // Verificar si se encontraron resultados
