@@ -296,7 +296,7 @@ img{
     border-radius: 0;
     transform:  rotate(45deg);
     margin: 25px 15px;
-    background: #f3b01b;
+    background: #fff;
 } 
 
 .container{
@@ -750,4 +750,8 @@ svg#icono2{
     justify-content: space-evenly !important;
     align-items: center !important;
 }
+}
+
+.carousel .indicators .indicator-item.active{
+    background-color: #f3b01b;
 }
