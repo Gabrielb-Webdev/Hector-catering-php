@@ -41,6 +41,16 @@ document.addEventListener('DOMContentLoaded', function () {
                         var modalLeft = modal.querySelector(".modal-left h2");
                         modalLeft.textContent = respuesta.titulo;
 
+                        // Selecciona aleatoriamente un ícono de eventos
+                        var iconosEventos = respuesta.iconosEventos;
+                        var iconoAleatorio = iconosEventos[Math.floor(Math.random() * iconosEventos.length)];
+
+                        // Obtiene el elemento img con la clase modal-image
+                        var modalImage = modal.querySelector(".modal-image");
+
+                        // Establece la fuente del ícono de eventos
+                        modalImage.src = iconoAleatorio;
+
                         // Llena el carrusel con las imágenes del evento
                         var swiperWrapper = modal.querySelector(".swiper-wrapper");
                         swiperWrapper.innerHTML = ""; // Vacía el contenido actual del carrusel
@@ -52,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             var img = document.createElement("img");
                             var modalRightTitulo = modal.querySelector(".modal-right h2");
                             var modalRightProducto = modal.querySelector(".modal-right p");
+                            
                             // Utiliza la ruta relativa completa para cargar la imagen
                             img.src = imagenSrc;
                             img.alt = "Imagen del evento";
@@ -60,7 +71,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             modalRightTitulo.textContent = respuesta.detailTitulo;
                             modalRightProducto.textContent = respuesta.detailProducto;
                         });
-
 
                         // Muestra el modal
                         modal.style.display = "flex"; // Cambia el display a flex

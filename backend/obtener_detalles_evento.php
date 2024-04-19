@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 }
 
 // Consulta para obtener los detalles del evento con el evento_id proporcionado
-$sql = "SELECT titulo_img_carousel, carousel_detail_img, detail_titulo, detail_producto FROM detalle_eventos WHERE evento_id = $eventoId";
+$sql = "SELECT titulo_img_carousel, carousel_detail_img, detail_titulo, detail_producto, icon_eventos FROM detalle_eventos WHERE evento_id = $eventoId";
 $result = $conn->query($sql);
 
 // Verificar si se encontraron resultados y devolver los detalles del evento como JSON
@@ -26,12 +26,13 @@ if ($result->num_rows > 0) {
     // Decodificar el JSON almacenado en la columna carousel_detail_img
     $imagenesCarrusel = json_decode($evento["carousel_detail_img"], true);
 
-    // Construir un objeto JSON que incluya el título, el título del detalle, el producto y las imágenes del carrusel
+    // Construir un objeto JSON que incluya el título, el título del detalle, el producto, las imágenes del carrusel y los iconos de eventos
     $detallesEvento = array(
         "titulo" => $evento["titulo_img_carousel"],
         "detailTitulo" => $evento["detail_titulo"],
         "detailProducto" => $evento["detail_producto"],
-        "imagenes" => $imagenesCarrusel
+        "imagenes" => $imagenesCarrusel,
+        "iconosEventos" => json_decode($evento["icon_eventos"], true)
     );
 
     // Devolver los detalles del evento como JSON

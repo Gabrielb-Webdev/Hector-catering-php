@@ -743,15 +743,36 @@ svg#icono2{
     top: 20px;
 }
 
-@media (max-width: 800px) {
     .swiper-slide {
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-evenly !important;
     align-items: center !important;
 }
-}
+
 
 .carousel .indicators .indicator-item.active{
     background-color: #f3b01b;
+}
+
+img.modal-image {
+    width: 15%;
+    height: auto;
+    position: relative;
+    right: 5%;
+}
+
+.Titulo_icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.modal-left h2{
+    margin-top: 0 !important;
+}
+
+h2.m-h2 {
+    display: flex;
+    align-items: end;
 }
