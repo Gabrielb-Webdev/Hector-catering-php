@@ -207,13 +207,6 @@ if (session_status() === PHP_SESSION_NONE) {
     <path d="M16 19h6" />
     <path d="M19 16v6" />
 </svg>
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash-x white" width="44" height="44" viewBox="0 0 24 24" style="cursor: pointer;" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M4 7h16" />
-  <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-  <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-  <path d="M10 12l4 4m0 -4l-4 4" />
-</svg>
     <?php endif; ?>
 </div>
 <script>
