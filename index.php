@@ -154,7 +154,7 @@ if (session_status() === PHP_SESSION_NONE) {
                             <img src="sources/Bigote_derecho.png" alt="Imagen de evento derecha">
                         </div>
                     </div>
-<div class="icon-center abajo">
+<div class="icon-center">
     <?php if (isset($_SESSION['email'])) : ?>
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil-plus" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" id="editEventosIcon" style="cursor: pointer;">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -170,18 +170,115 @@ if (session_status() === PHP_SESSION_NONE) {
 <!-- Sección de carrusel de eventos -->
 <div class="carousel center-align">
     <?php include 'backend/consultar_detalle_eventos.php'; ?>
-<?php foreach ($detalles_eventos as $evento): ?>
-    <div class="carousel-item">
-        <h2 class="subtitulo"><?php echo $evento["titulo_img_carousel"]; ?></h2>
-        <div class="linea-division"></div>
-        <p class="sabor"><?php echo $evento["descripcion_corta"]; ?></p>
-        <img class="caru-hover" src="<?php echo $evento["img_carousel"]; ?>" alt="">
-        <!-- Aquí se incluye el evento_id como un atributo data-evento-id -->
-        <button class="verMasBtn" data-evento-id="<?php echo $evento['evento_id']; ?>">Ver más</button>
-    </div>
-<?php endforeach; ?>
+    <?php foreach ($detalles_eventos as $evento): ?>
+        <div class="carousel-item">
+            <div class="">
+                <h2 id="eventosTituloNew<?php echo $evento['evento_id']; ?>" class="subtitulo"><?php echo $evento["titulo_img_carousel"]; ?></h2>
+                <?php if (isset($_SESSION['email'])) : ?>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil-plus edit-eventos-icon white" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" style="cursor: pointer;" data-evento-id="<?php echo $evento['evento_id']; ?>">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+                        <path d="M13.5 6.5l4 4" />
+                        <path d="M16 19h6" />
+                        <path d="M19 16v6" />
+                    </svg>
+                <?php endif; ?>
+            </div>
+            <div class="linea-division"></div>
+<div class="lineal">
+    <p class="sabor" id="descripcionCorta<?php echo $evento['evento_id']; ?>"><?php echo $evento["descripcion_corta"]; ?></p>
+    <?php if (isset($_SESSION['email'])) : ?>
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil-plus edit-descripcion-icon white" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" style="cursor: pointer;" data-evento-id="<?php echo $evento['evento_id']; ?>">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+        <path d="M13.5 6.5l4 4" />
+        <path d="M16 19h6" />
+        <path d="M19 16v6" />
+    </svg>
+    <?php endif; ?>
+</div>
+<div class="">
+<img class="caru-hover" src="<?php echo $evento["img_carousel"]; ?>" alt="">
+<?php if (isset($_SESSION['email'])) : ?>
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil-plus edite-img-carousel-icon white" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" style="cursor: pointer;" onclick="confirmarCambioImagen(<?php echo $evento['evento_id']; ?>)">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+    <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+    <path d="M13.5 6.5l4 4" />
+    <path d="M16 19h6" />
+    <path d="M19 16v6" />
+</svg>
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash-x white" width="44" height="44" viewBox="0 0 24 24" style="cursor: pointer;" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 7h16" />
+  <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+  <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+  <path d="M10 12l4 4m0 -4l-4 4" />
+</svg>
+    <?php endif; ?>
+</div>
+<script>
+function confirmarCambioImagen(evento_id) {
+    if (confirm("¿Seguro que quieres cambiar la foto?")) {
+        // Crear un input de tipo archivo y hacer clic en él para abrir el explorador de archivos
+        var inputFile = document.createElement('input');
+        inputFile.type = 'file';
+        inputFile.accept = 'image/*';
+        inputFile.style.display = 'none';
+
+        // Función para manejar el cambio de archivo seleccionado
+        inputFile.onchange = function() {
+            var file = this.files[0];
+            if (file) {
+                // Generar un nombre aleatorio para la imagen
+                var nombreImagen = generarNombreAleatorio(file.name);
+                
+                // Construir la ruta completa de la imagen
+                var rutaCompleta = '../sources/test/' + nombreImagen;
+
+                // Crear un objeto FormData para enviar el archivo
+                var formData = new FormData();
+                formData.append('evento_id', evento_id);
+                formData.append('nueva_imagen', file, nombreImagen);
+                formData.append('ruta_completa', rutaCompleta); // Agregar la ruta completa al FormData
+
+                // Enviar la solicitud AJAX
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'backend/editar_imagen_evento.php', true);
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        alert(xhr.responseText); // Mostrar la respuesta del servidor
+                        // Recargar la página o realizar cualquier otra acción necesaria
+                        location.reload();
+                    } else {
+                        alert('Hubo un error al procesar la solicitud.');
+                    }
+                };
+                xhr.send(formData);
+            }
+        };
+
+        // Agregar el input al documento y hacer clic en él para abrir el explorador de archivos
+        document.body.appendChild(inputFile);
+        inputFile.click();
+    }
+}
+
+// Función para generar un nombre aleatorio para la imagen
+function generarNombreAleatorio(nombreOriginal) {
+    var extension = nombreOriginal.split('.').pop();
+    var nombreAleatorio = Math.random().toString(36).substring(7); // Genera una cadena aleatoria de 7 caracteres
+    return nombreAleatorio + '.' + extension;
+}
+</script>
+
+      
+            <!-- Aquí se incluye el evento_id como un atributo data-evento-id -->
+            <button class="verMasBtn" data-evento-id="<?php echo $evento['evento_id']; ?>">Ver más</button>
+        </div>
+    <?php endforeach; ?>
 </div>
 
+<script src="scripts/custom_events.js"></script>
                 </div>
             </div>
         </div>

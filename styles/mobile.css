@@ -206,5 +206,8 @@
         top: 5%;
         width: 50%;
     }
+    .swiper-container {
+        height: 200px;
+    }
     
 }

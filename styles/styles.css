@@ -245,15 +245,22 @@ img{
     font-size: 50px;
     font-weight: 500;
     text-transform: uppercase;
+    font-family: "Merienda", cursive;
+    font-optical-sizing: auto;
+    font-weight: 600; /* Puedes ajustar el valor según tus necesidades, el valor 600 es equivalente a semibold */
+    font-style: normal;
 }
 
+
 .sabor { 
-    color: #fff;
+    color: #000;
     margin: 7px 0;
     font-size: 50px;
-    font-weight: 600;
+    font-weight: 400; /* Cambiado a regular */
     text-shadow: 2px 2px 1px rgba(0,0,0,0.7);
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Merienda', cursive; /* Cambiado a "Merienda" */
+    font-optical-sizing: auto;
+    font-style: normal;
     margin-top: 0;
 }
 
@@ -775,4 +782,22 @@ img.modal-image {
 h2.m-h2 {
     display: flex;
     align-items: end;
+}
+
+button.verMasBtn {
+    position: relative;
+    top: 10%;
+}
+
+.carousel .icon-center h2 {
+    justify-content: space-around !important;
+    background-color: white !important;
+    position: relative !important;
+    background-color: transparent;
+}
+
+.lineal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
