@@ -50,11 +50,14 @@ document.addEventListener('DOMContentLoaded', function () {
                             var swiperSlide = document.createElement("div");
                             swiperSlide.className = "swiper-slide";
                             var img = document.createElement("img");
+                            var modalRightTitulo = modal.querySelector(".modal-right h2");
                             // Utiliza la ruta relativa completa para cargar la imagen
                             img.src = imagenSrc;
                             img.alt = "Imagen del evento";
                             swiperSlide.appendChild(img);
                             swiperWrapper.appendChild(swiperSlide);
+                            modalRightTitulo.textContent = respuesta.detailTitulo;
+
                         });
 
 
