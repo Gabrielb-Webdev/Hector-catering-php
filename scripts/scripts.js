@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
             };
-            xhr.open("GET", "backend/obtener_detalles_evento.php?evento_id=" + eventoId, true);
+            xhr.open("GET", "../backend/obtener_detalles_evento.php?evento_id=" + eventoId, true);
             xhr.send();
         });
     });
