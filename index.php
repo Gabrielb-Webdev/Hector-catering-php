@@ -226,7 +226,7 @@ function confirmarCambioImagen(evento_id) {
                 var nombreImagen = generarNombreAleatorio(file.name);
                 
                 // Construir la ruta completa de la imagen
-                var rutaCompleta = '../sources/test/' + nombreImagen;
+                var rutaCompleta = 'https://hector-catering-php-production.up.railway.app/hector/img' + nombreImagen;
 
                 // Crear un objeto FormData para enviar el archivo
                 var formData = new FormData();
