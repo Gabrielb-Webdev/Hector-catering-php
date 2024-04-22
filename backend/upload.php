@@ -10,7 +10,7 @@ if (isset($_FILES['file'])) {
     $file = $_FILES['file'];
 
     // Especificar la ruta de destino en el volumen de Railway
-    $uploadDirectory = '/app/public/hector/img/';
+    $uploadDirectory = '/hector/img/';
 
     // Obtener el nombre y la extensión del archivo
     $fileName = $file['name'];
@@ -25,7 +25,7 @@ if (isset($_FILES['file'])) {
     // Mover el archivo al directorio de destino
     if (move_uploaded_file($file['tmp_name'], $targetPath)) {
         // Si se movió correctamente, insertar la ruta y el correo electrónico en la base de datos
-        $rutaImagen = '/hector/img/' . $uniqueFileName;
+        $rutaImagen = $uploadDirectory . $uniqueFileName;
         $email = isset($_SESSION['email']) ? $_SESSION['email'] : ""; // Obtener el correo electrónico de la sesión
 
         $sql = "INSERT INTO carousel (imagenes_carousel, email) VALUES ('$rutaImagen', '$email')";
