@@ -10,7 +10,7 @@ if (isset($_FILES['file'])) {
     $file = $_FILES['file'];
 
     // Especificar la ruta de destino en el volumen de Railway
-    $uploadDirectory = '/hector/img/';
+    $uploadDirectory = '../sources/test/';
 
     // Obtener el nombre y la extensión del archivo
     $fileName = $file['name'];
