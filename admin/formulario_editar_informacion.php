@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['evento_id']) && isset(
     $eventoId = $_POST['evento_id'];
     $nuevoTitulo = $_POST['titulo'];
     $nuevaDescripcionCorta = $_POST['descripcion_corta'];
+    $nuevoDetalleProducto = $_POST['detail_producto']; // Nueva línea para obtener la descripción del producto
     
     // Verificar si se subió una nueva imagen para img_carousel
     if ($_FILES['img_carousel']['error'] === UPLOAD_ERR_OK) {
@@ -60,6 +61,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['evento_id']) && isset(
         $iconEventosPath = $_POST['icon_eventos_actual'];
     }
 
+    // Verificar si se recibió una nueva descripción del producto
+    $detailProducto = isset($_POST['detail_producto']) ? $_POST['detail_producto'] : '';
+
     // Conectar a la base de datos
     $servername = "roundhouse.proxy.rlwy.net";
     $username_db = "root";
@@ -74,10 +78,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['evento_id']) && isset(
         die("Conexión fallida: " . $conn->connect_error);
     }
 
-    // Preparar la consulta SQL para actualizar el título, la descripción corta, img_carousel, carousel_detail_img y icon_eventos del evento
-    $sqlUpdate = "UPDATE detalle_eventos SET titulo_img_carousel = ?, descripcion_corta = ?, img_carousel = ?, carousel_detail_img = ?, icon_eventos = ? WHERE evento_id = ?";
+    // Preparar la consulta SQL para actualizar el título, la descripción corta, img_carousel, carousel_detail_img, icon_eventos y detail_producto del evento
+    $sqlUpdate = "UPDATE detalle_eventos SET titulo_img_carousel = ?, descripcion_corta = ?, img_carousel = ?, carousel_detail_img = ?, icon_eventos = ?, detail_producto = ? WHERE evento_id = ?";
     $stmtUpdate = $conn->prepare($sqlUpdate);
-    $stmtUpdate->bind_param("sssssi", $nuevoTitulo, $nuevaDescripcionCorta, $imgPath, $carouselImgPath, $iconEventosPath, $eventoId);
+    $stmtUpdate->bind_param("ssssssi", $nuevoTitulo, $nuevaDescripcionCorta, $imgPath, $carouselImgPath, $iconEventosPath, $detailProducto, $eventoId);
 
     // Ejecutar la consulta
     if ($stmtUpdate->execute()) {
@@ -112,6 +116,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['evento_id']) && isset(
     $imgPath = '';
     $carouselImgPath = '';
     $iconEventosPath = '';
+    $detailProducto = ''; // Agregar variable para almacenar la descripción del producto
 
     // Verificar si se recibió el evento_id en la URL
     if(isset($_GET['evento_id'])) {
@@ -132,8 +137,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['evento_id']) && isset(
             die("Conexión fallida: " . $conn->connect_error);
         }
 
-        // Consultar la base de datos para obtener el título, la descripción corta, img_carousel, carousel_detail_img y icon_eventos del evento por su ID
-        $sql = "SELECT titulo_img_carousel, descripcion_corta, img_carousel, carousel_detail_img, icon_eventos FROM detalle_eventos WHERE evento_id = ?";
+        // Consultar la base de datos para obtener el título, la descripción corta, img_carousel, carousel_detail_img, icon_eventos y detail_producto del evento por su ID
+        $sql = "SELECT titulo_img_carousel, descripcion_corta, img_carousel, carousel_detail_img, icon_eventos, detail_producto FROM detalle_eventos WHERE evento_id = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $eventoId);
         $stmt->execute();
@@ -141,13 +146,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['evento_id']) && isset(
 
         // Verificar si se encontraron resultados
         if ($result->num_rows > 0) {
-            // Obtener el título, la descripción corta, img_carousel, carousel_detail_img y icon_eventos del evento
+            // Obtener el título, la descripción corta, img_carousel, carousel_detail_img, icon_eventos y detail_producto del evento
             $row = $result->fetch_assoc();
             $titulo = $row['titulo_img_carousel'];
             $descripcionCorta = $row['descripcion_corta'];
             $imgPath = extractImagePath($row['img_carousel']);
             $carouselImgPath = extractImagePath($row['carousel_detail_img']);
             $iconEventosPath = extractImagePath($row['icon_eventos']);
+            $detailProducto = $row['detail_producto']; // Obtener la descripción del producto
         } else {
             // Si no se encontraron resultados, mostrar un mensaje de error
             echo "No se encontró el título, la descripción corta y las imágenes del evento con ID: " . $eventoId;
@@ -167,6 +173,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['evento_id']) && isset(
     <br><br>
     <label for="descripcion_corta">Descripción Corta:</label>
     <input type="text" id="descripcion_corta" name="descripcion_corta" value="<?php echo $descripcionCorta ?? ''; ?>" required>
+    <br><br>
+    <label for="detail_producto">Detalle del Producto:</label> <!-- Agregar campo para la descripción del producto -->
+    <input type="text" id="detail_producto" name="detail_producto" value="<?php echo $detailProducto ?? ''; ?>" required>
     <br><br>
     <label for="img_carousel">Imagen Carousel:</label>
     <input type="file" id="img_carousel" name="img_carousel">
