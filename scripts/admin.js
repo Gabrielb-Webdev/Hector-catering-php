@@ -49,7 +49,7 @@ icono2.addEventListener('click', () => {
 
         // Enviar una solicitud AJAX para eliminar la imagen del proyecto
         const xhrDeleteFile = new XMLHttpRequest();
-        xhrDeleteFile.open('POST', 'backend/delete.php'); // Cambia la ruta según corresponda
+        xhrDeleteFile.open('POST', '../backend/delete.php'); // Cambia la ruta según corresponda
         xhrDeleteFile.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhrDeleteFile.onload = function () {
             if (xhrDeleteFile.status === 200) {

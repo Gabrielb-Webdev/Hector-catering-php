@@ -6,7 +6,7 @@ if(session_status() === PHP_SESSION_NONE) {
 // Verificar si ya hay una sesión iniciada
 if(isset($_SESSION['email'])) {
     // Si hay una sesión iniciada, redireccionar al usuario a ../index.php
-    header("Location: ../index.php");
+    header("Location: ../admin/admin.php");
     exit(); // Asegurarse de que el script se detenga después de redireccionar
 }
 
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Almacenar el correo electrónico del usuario en la variable de sesión
         $_SESSION['email'] = $email;
         // Redireccionar al usuario a ../index.php
-        header("Location: ../index.php");
+        header("Location: ../admin/admin.php");
         exit(); // Asegurarse de que el script se detenga después de redireccionar
     } else {
         // Usuario o contraseña incorrectos
