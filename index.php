@@ -60,6 +60,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <!-- Input oculto para cargar imágenes -->
     <input type="file" id="fileInput" accept="image/*" style="display:none;">
 
+    
     <!-- Sección 2: Información de quienes somos -->
     <section class="quienes-somos">
         <div class="quienes-somos-content">
