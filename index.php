@@ -40,9 +40,6 @@ if (session_status() === PHP_SESSION_NONE) {
             <li class="navbar-menu-item"><a href="#">Inicio</a></li>
             <li class="navbar-menu-item"><a href="#">Eventos</a></li>
             <li class="navbar-menu-item"><a href="#">Contacto</a></li>
-            <?php if (isset($_SESSION['email'])) : ?>
-                <li class="navbar-menu-item"><a href="backend/logout.php">Cerrar sesión</a></li>
-            <?php endif; ?>
         </ul>
     </nav>
 
@@ -185,7 +182,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <h2 class="m-h2"></h2>
         </div>
         <div class="swiper-container">
-            <div class="swiper-wrapper">
+            <div class="modal-image">
                 <div class="swiper-slide"></div>
             </div>
             <!-- Agrega la paginación si lo deseas -->
