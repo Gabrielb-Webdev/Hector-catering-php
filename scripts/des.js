@@ -28,11 +28,11 @@ function saveEditedDescription() {
     const editedDescription = document.getElementById('editDescriptionInput').value;
     const sectionDescription = document.getElementById('sectionDescripcion');
     if (sectionDescription) {
-        // Aquí enviarías la descripción editada al backend para guardarla en la base de datos
+        // Aquí enviarías la descripción editada al ../backend para guardarla en la base de datos
         // Usaremos AJAX para enviar una solicitud POST al archivo PHP
 
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'backend/guardar_descripcion.php', true);
+        xhr.open('POST', '../backend/guardar_descripcion.php', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {

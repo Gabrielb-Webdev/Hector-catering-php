@@ -31,11 +31,11 @@ function saveEditedTitle() {
     const editedTitle = document.getElementById('editTitleInput').value;
     const sectionTitle = document.getElementById('sectionTitle');
     if (sectionTitle) {
-        // Aquí enviarías el título editado al backend para guardarlo en la base de datos
+        // Aquí enviarías el título editado al ../backend para guardarlo en la base de datos
         // Usaremos AJAX para enviar una solicitud POST al archivo PHP
 
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'backend/guardar_titulo.php', true);
+        xhr.open('POST', '../backend/guardar_titulo.php', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {

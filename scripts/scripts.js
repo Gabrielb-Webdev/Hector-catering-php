@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+// Elimina la inicialización del carousel, ya que parece que no lo estás utilizando aquí
+
 document.addEventListener('DOMContentLoaded', function () {
     // Obtén todos los botones "Ver más"
     var verMasBtns = document.querySelectorAll(".verMasBtn");
@@ -49,18 +51,26 @@ document.addEventListener('DOMContentLoaded', function () {
                         // Establece la fuente del ícono de eventos
                         modalImage.src = iconoAleatorio;
 
-                        // Obtener la primera imagen del evento
-                        var primeraImagen = respuesta.imagenes[0];
+                        // Llena el carrusel con las imágenes del evento
+                        var swiperWrapper = modal.querySelector(".swiper-wrapper");
+                        swiperWrapper.innerHTML = ""; // Vacía el contenido actual del carrusel
 
-                        // Obtiene el elemento img dentro de modal-left y establece su src
-                        var modalLeftImage = modal.querySelector(".modal-image");
-                        modalLeftImage.src = primeraImagen;
-                        
-                        // Llena el título y la descripción del evento en el modal-right
-                        var modalRightTitulo = modal.querySelector(".modal-right h2");
-                        var modalRightProducto = modal.querySelector(".modal-right p");
-                        modalRightTitulo.textContent = respuesta.detailTitulo;
-                        modalRightProducto.textContent = respuesta.detailProducto;
+                        // Llena el carrusel con las imágenes del evento
+                        respuesta.imagenes.forEach(function (imagenSrc) {
+                            var swiperSlide = document.createElement("div");
+                            swiperSlide.className = "swiper-slide";
+                            var img = document.createElement("img");
+                            var modalRightTitulo = modal.querySelector(".modal-right h2");
+                            var modalRightProducto = modal.querySelector(".modal-right p");
+                            
+                            // Utiliza la ruta relativa completa para cargar la imagen
+                            img.src = imagenSrc;
+                            img.alt = "Imagen del evento";
+                            swiperSlide.appendChild(img);
+                            swiperWrapper.appendChild(swiperSlide);
+                            modalRightTitulo.textContent = respuesta.detailTitulo;
+                            modalRightProducto.textContent = respuesta.detailProducto;
+                        });
 
                         // Muestra el modal
                         modal.style.display = "flex"; // Cambia el display a flex

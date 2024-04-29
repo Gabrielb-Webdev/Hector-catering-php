@@ -41,11 +41,11 @@ document.addEventListener('DOMContentLoaded', function() {
 function saveEditedEventTitle(eventoId) {
     const editedEventTitle = document.getElementById('editEventTitleInput' + eventoId).value;
 
-    // Aquí enviarías el título editado y el ID del evento al backend para guardarlos en la base de datos
+    // Aquí enviarías el título editado y el ID del evento al ../backend para guardarlos en la base de datos
     // Usaremos AJAX para enviar una solicitud POST al archivo PHP
 
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'backend/guardar_titulo_evento.php', true);
+    xhr.open('POST', '../backend/guardar_titulo_evento.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -99,11 +99,11 @@ function activateEditEventDescriptionAndAddClass(eventoId) {
 function saveEditedEventDescription(eventoId) {
     const editedEventDescription = document.getElementById('editEventDescriptionInput' + eventoId).value;
 
-    // Aquí enviarías la descripción corta editada y el ID del evento al backend para guardarlos en la base de datos
+    // Aquí enviarías la descripción corta editada y el ID del evento al ../backend para guardarlos en la base de datos
     // Usaremos AJAX para enviar una solicitud POST al archivo PHP
 
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'backend/guardar_descripcion_corta_evento.php', true);
+    xhr.open('POST', '../backend/guardar_descripcion_corta_evento.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -169,11 +169,11 @@ function activateEditEventDescriptionAndAddClass(eventoId) {
 function saveEditedEventDescription(eventoId) {
     const editedEventDescription = document.getElementById('editEventDescriptionInput' + eventoId).value;
 
-    // Aquí enviarías la descripción corta editada y el ID del evento al backend para guardarlos en la base de datos
+    // Aquí enviarías la descripción corta editada y el ID del evento al ../backend para guardarlos en la base de datos
     // Usaremos AJAX para enviar una solicitud POST al archivo PHP
 
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'backend/guardar_descripcion_corta_evento.php', true);
+    xhr.open('POST', '../backend/guardar_descripcion_corta_evento.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
