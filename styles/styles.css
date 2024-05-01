@@ -647,7 +647,7 @@ button {
     top: 0;
     right: 0px;
     left: auto;
-    background-color: #f3b01b;
+    /* background-color: #f3b01b; */
     border-radius: 65px;
     width: 2.5%;
     height: auto;
@@ -672,6 +672,29 @@ button {
     right: 10px;
     width: 25%;
 }
+
+/* Agrega estilos CSS personalizados */
+       .boton-whatsapp {
+    position: fixed;
+    bottom: 13%;
+    right: 10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #25D366;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    border: none;
+    cursor: pointer;
+}
+
+        .boton-whatsapp:hover {
+            background-color: #128C7E; /* Cambia el color de fondo al pasar el mouse */
+        }
 
 
 /* Estilos para el contenido dentro de los lados del modal */
@@ -741,7 +764,7 @@ svg#icono2{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-color: white;
+    /* background-color: white; */
     position: relative;
     bottom: 20px;
 }

@@ -1,8 +1,3 @@
-<?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +9,8 @@ if (session_status() === PHP_SESSION_NONE) {
     <!-- Materialize.css -->
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/mobile.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -344,7 +341,10 @@ function generarNombreAleatorio(nombreOriginal) {
         <h2></h2>
         <p></p>
         <!-- Botón adicional -->
-        <button class="boton-adicional">Botón Adicional</button>
+            <a href="https://api.whatsapp.com/send?phone=TUNUMERO" target="_blank" class="btn-floating boton-whatsapp">
+        <!-- Icono de WhatsApp de Materialize -->
+        <i class="fab fa-whatsapp"></i>
+    </a>
     </div>
 </div>
 

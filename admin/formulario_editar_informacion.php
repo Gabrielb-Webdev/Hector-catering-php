@@ -83,17 +83,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['evento_id']) && isset(
     $stmtUpdate = $conn->prepare($sqlUpdate);
     $stmtUpdate->bind_param("ssssssi", $nuevoTitulo, $nuevaDescripcionCorta, $imgPath, $carouselImgPath, $iconEventosPath, $detailProducto, $eventoId);
 
-    // Ejecutar la consulta
-    if ($stmtUpdate->execute()) {
-        echo "Título, descripción corta e imágenes actualizadas correctamente.";
-    } else {
-        echo "Error al actualizar el título, la descripción corta y las imágenes.";
-    }
+   // Ejecutar la consulta
+if ($stmtUpdate->execute()) {
+    echo "Título, descripción corta e imágenes actualizadas correctamente.";
+    // Redirigir a ../admin/admin.php después de la actualización exitosa
+    header("Location: ../admin/admin.php");
+    exit(); // Asegurar que el script se detenga después de la redirección
+} else {
+    echo "Error al actualizar el título, la descripción corta y las imágenes.";
+}
+
 
     // Cerrar la conexión a la base de datos
     $conn->close();
 } else {
-    echo "No se recibieron los datos del formulario correctamente.";
+    echo "";
 }
 ?>
 
@@ -179,17 +183,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['evento_id']) && isset(
     <br><br>
     <label for="img_carousel">Imagen Carousel:</label>
     <input type="file" id="img_carousel" name="img_carousel">
-    <?php if(isset($imgPath) && !empty($imgPath)) echo '<img src="' . extractImagePath($imgPath) . '" alt="Imagen Carousel">' ?>
+    <?php if(isset($imgPath) && !empty($imgPath)) echo '<img style="width:50%;" src="' . extractImagePath($imgPath) . '" alt="Imagen Carousel">' ?>
     <input type="hidden" name="img_carousel_actual" value="<?php echo $imgPath ?? ''; ?>">
     <br><br>
     <label for="carousel_detail_img">Imagen Carousel Detail:</label>
     <input type="file" id="carousel_detail_img" name="carousel_detail_img">
-    <?php if(isset($carouselImgPath) && !empty($carouselImgPath)) echo '<img src="' . extractImagePath($carouselImgPath) . '" alt="Imagen Carousel Detail">' ?>
+    <?php if(isset($carouselImgPath) && !empty($carouselImgPath)) echo '<img style="width:50%;" src="' . extractImagePath($carouselImgPath) . '" alt="Imagen Carousel Detail">' ?>
     <input type="hidden" name="carousel_detail_img_actual" value="<?php echo $carouselImgPath ?? ''; ?>">
     <br><br>
     <label for="icon_eventos">Icono Eventos:</label>
     <input type="file" id="icon_eventos" name="icon_eventos">
-    <?php if(isset($iconEventosPath) && !empty($iconEventosPath)) echo '<img src="' . extractImagePath($iconEventosPath) . '" alt="Icono Eventos">' ?>
+    <?php if(isset($iconEventosPath) && !empty($iconEventosPath)) echo '<img style="width:50%;"src="' . extractImagePath($iconEventosPath) . '" alt="Icono Eventos">' ?>
     <input type="hidden" name="icon_eventos_actual" value="<?php echo $iconEventosPath ?? ''; ?>">
     <br><br>
     <input type="hidden" id="evento_id" name="evento_id" value="<?php echo $eventoId ?? ''; ?>">
