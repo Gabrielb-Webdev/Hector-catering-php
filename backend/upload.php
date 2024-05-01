@@ -9,7 +9,7 @@ include 'estado.php';
 if (isset($_FILES['file'])) {
     $file = $_FILES['file'];
 
-    // Especificar la ruta de destino en el volumen de Railway
+    // Especificar la ruta de destino
     $uploadDirectory = '../sources/test/';
 
     // Obtener el nombre y la extensión del archivo
@@ -20,11 +20,11 @@ if (isset($_FILES['file'])) {
     $uniqueFileName = uniqid('image_') . '.' . $fileExtension;
 
     // Ruta completa del archivo de destino
-    $targetPath = $_SERVER['DOCUMENT_ROOT'] . $uploadDirectory . $uniqueFileName;
+    $targetPath = $uploadDirectory . $uniqueFileName;
 
     // Mover el archivo al directorio de destino
     if (move_uploaded_file($file['tmp_name'], $targetPath)) {
-        // Si se movió correctamente, insertar la ruta y el correo electrónico en la base de datos
+        // Si se movió correctamente, insertar la ruta en la base de datos
         $rutaImagen = $uploadDirectory . $uniqueFileName;
         $email = isset($_SESSION['email']) ? $_SESSION['email'] : ""; // Obtener el correo electrónico de la sesión
 

@@ -240,7 +240,8 @@ img{
 
 .subtitulo {
     margin: 0;
-    color: #000;
+    color: #f3b01b;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.7);
     display: inline;
     font-size: 50px;
     font-weight: 500;
@@ -253,7 +254,7 @@ img{
 
 
 .sabor { 
-    color: #000;
+    color: #f3b01b;
     margin: 7px 0;
     font-size: 50px;
     font-weight: 400; /* Cambiado a regular */
@@ -823,4 +824,9 @@ button.verMasBtn {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+button:focus {
+    outline: none;
+    background-color: gray;
 }
